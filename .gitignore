@@ -9,4 +9,5 @@ junit.xml
 package-lock.json
 yarn.lock
 .awcache
+.vscode
 public
