@@ -16,7 +16,8 @@
     "paths": {
       "core": ["core"],
       "scenes": ["scenes"],
-      "pods": ["pods"]
+      "pods": ["pods"],
+      "layouts": ["layouts"]
     }
   },
   "include": ["./src/**/*", "./config/test/setup.ts", "./global.types.d.ts"]
