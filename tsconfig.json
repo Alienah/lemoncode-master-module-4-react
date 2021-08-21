@@ -15,7 +15,8 @@
     "baseUrl": "./src/",
     "paths": {
       "core": ["core"],
-      "scenes": ["scenes"]
+      "scenes": ["scenes"],
+      "pods": ["pods"]
     }
   },
   "include": ["./src/**/*", "./config/test/setup.ts", "./global.types.d.ts"]
