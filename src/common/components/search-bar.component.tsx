@@ -2,15 +2,22 @@ import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import React from 'react';
 import { Button, TextField } from 'common/components';
-import { useState } from 'react';
 
 interface Props {
   defaultValue?: string;
-  onSearch: (value: string) => void;
+  onChange: (searchValue: string) => void;
+  onSearch: () => void;
+  searchValue: string;
 }
 
 const useStyles = makeStyles({
-  searchIcon: {},
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  form: {
+    display: 'flex',
+  },
   barItem: {
     marginRight: '8px',
   },
@@ -18,28 +25,33 @@ const useStyles = makeStyles({
 
 export const SearchBar: React.FC<Props> = props => {
   const classes = useStyles();
-  const { defaultValue = '', onSearch } = props;
-  const [searchValue, setSearchValue] = useState<string>(defaultValue);
+  const { onSearch, searchValue, onChange } = props;
 
-  const handleSearch = () => {
-    onSearch(searchValue);
+  const handleSubmit = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onSearch();
   };
+
   return (
     <AppBar position="static" color="transparent">
-      <Toolbar>
-        <div className={`${classes.searchIcon} ${classes.barItem}`}>
+      <Toolbar className={classes.toolbar}>
+        <div className={classes.barItem}>
           <SearchIcon />
         </div>
-        <div className={classes.barItem}>
-          <TextField
-            aria-label="search"
-            label="Search"
-            value={searchValue}
-            onChange={setSearchValue}
-            size="small"
-          />
-        </div>
-        <Button onClick={handleSearch}>Search</Button>
+        <form className={classes.form}>
+          <div className={classes.barItem}>
+            <TextField
+              aria-label="search"
+              label="Search"
+              onChange={onChange}
+              size="small"
+              value={searchValue}
+            />
+          </div>
+          <Button type="submit" onClick={handleSubmit}>
+            Search
+          </Button>
+        </form>
       </Toolbar>
     </AppBar>
   );
