@@ -5,7 +5,7 @@ import { getMemberList } from './api';
 import { mapMemberListToVM } from './member-list.mappers';
 import { Member } from './member-list.vm';
 
-import { SearchBar } from 'common/components';
+import { Loader, SearchBar } from 'common/components';
 import { MemberListComponent } from './member-list.component';
 
 export const MemberListContainer: React.FC = () => {
@@ -39,7 +39,7 @@ export const MemberListContainer: React.FC = () => {
         searchValue={searchValue}
         onChange={setSearchValue}
       />
-      {loading && <div>Loading...</div>}
+      {loading && <Loader size={80} />}
       {!loading && <MemberListComponent members={list} />}
     </>
   );
