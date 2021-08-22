@@ -3,15 +3,20 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import { switchRoutes } from './routes';
 import { AppLayout } from 'layouts';
 import { AuthProvider, OrgProvider } from 'core/providers';
-import { MemberListScene, MemberDetailScene } from 'scenes';
+import {
+  CharacterDetailScene,
+  CharacterListScene,
+  MemberListScene,
+  MemberDetailScene,
+} from 'scenes';
 
 export const AppRouter: React.FC = () => {
   return (
     <HashRouter>
       <Switch>
         <AuthProvider>
-          <OrgProvider>
-            <AppLayout>
+          <AppLayout>
+            <OrgProvider>
               <Route
                 exact={true}
                 path={[switchRoutes.root, switchRoutes.memberList]}
@@ -21,8 +26,14 @@ export const AppRouter: React.FC = () => {
               <Route exact={true} path={[switchRoutes.memberDetail]}>
                 <MemberDetailScene />
               </Route>
-            </AppLayout>
-          </OrgProvider>
+            </OrgProvider>
+            <Route exact={true} path={[switchRoutes.characterList]}>
+              <CharacterListScene />
+            </Route>
+            <Route exact={true} path={[switchRoutes.characterDetail]}>
+              <CharacterDetailScene />
+            </Route>
+          </AppLayout>
         </AuthProvider>
       </Switch>
     </HashRouter>

@@ -15,7 +15,7 @@ interface Props {
   members: Member[];
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
@@ -24,11 +24,14 @@ const useStyles = makeStyles({
   root: {
     width: '760px',
     margin: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   avatarImg: {
     width: '5rem',
   },
-});
+}));
 
 export const MemberListComponent: React.FC<Props> = props => {
   const { members } = props;

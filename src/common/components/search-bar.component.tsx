@@ -1,6 +1,6 @@
+import React from 'react';
 import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import React from 'react';
 import { Button, TextField } from 'common/components';
 
 interface Props {
@@ -11,6 +11,9 @@ interface Props {
 }
 
 const useStyles = makeStyles({
+  appBar: {
+    padding: '8px 0',
+  },
   toolbar: {
     display: 'flex',
     justifyContent: 'center',
@@ -33,7 +36,7 @@ export const SearchBar: React.FC<Props> = props => {
   };
 
   return (
-    <AppBar position="static" color="transparent">
+    <AppBar position="static" color="transparent" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.barItem}>
           <SearchIcon />
