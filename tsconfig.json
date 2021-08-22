@@ -19,6 +19,7 @@
       "pods": ["pods"],
       "layouts": ["layouts"],
       "common": ["common"],
+      "common-app": ["common-app"],
       "hooks": ["hooks"]
     }
   },

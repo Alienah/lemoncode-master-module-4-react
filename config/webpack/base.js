@@ -14,6 +14,7 @@ module.exports = merge(
         pods: helpers.resolveFromRootPath('src/pods'),
         layouts: helpers.resolveFromRootPath('src/layouts'),
         common: helpers.resolveFromRootPath('src/common'),
+        "common-app": helpers.resolveFromRootPath('src/common-app'),
         hooks: helpers.resolveFromRootPath('src/hooks'),
       }
     },
