@@ -19,7 +19,7 @@ export const switchRoutes: SwitchRoutes = {
 interface Routes
   extends Omit<SwitchRoutes, 'memberDetail' | 'characterDetail'> {
   memberDetail: (id: string) => string;
-  characterDetail: (id: string) => string;
+  characterDetail: (id: number) => string;
 }
 
 export const routes: Routes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import { switchRoutes } from './routes';
 import { AppLayout } from 'layouts';
-import { AuthProvider, OrgProvider } from 'core/providers';
+import { AuthProvider, CharactersProvider, OrgProvider } from 'core/providers';
 import {
   CharacterDetailScene,
   CharacterListScene,
@@ -27,12 +27,14 @@ export const AppRouter: React.FC = () => {
                 <MemberDetailScene />
               </Route>
             </OrgProvider>
-            <Route exact={true} path={[switchRoutes.characterList]}>
-              <CharacterListScene />
-            </Route>
-            <Route exact={true} path={[switchRoutes.characterDetail]}>
-              <CharacterDetailScene />
-            </Route>
+            <CharactersProvider>
+              <Route exact={true} path={[switchRoutes.characterList]}>
+                <CharacterListScene />
+              </Route>
+              <Route exact={true} path={[switchRoutes.characterDetail]}>
+                <CharacterDetailScene />
+              </Route>
+            </CharactersProvider>
           </AppLayout>
         </AuthProvider>
       </Switch>

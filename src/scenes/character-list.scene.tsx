@@ -1,9 +1,10 @@
 import React from 'react';
+import { CharacterListContainer } from 'pods/character-list';
 
 export const CharacterListScene: React.FC = () => {
   return (
     <>
-      <div>Rick and morty</div>
+      <CharacterListContainer />
     </>
   );
 };

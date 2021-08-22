@@ -6,8 +6,9 @@ import { Button, TextField } from 'common/components';
 interface Props {
   defaultValue?: string;
   onChange: (searchValue: string) => void;
-  onSearch: () => void;
+  onSearch?: () => void;
   searchValue: string;
+  showButton?: boolean;
 }
 
 const useStyles = makeStyles({
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
 
 export const SearchBar: React.FC<Props> = props => {
   const classes = useStyles();
-  const { onSearch, searchValue, onChange } = props;
+  const { onSearch, searchValue, onChange, showButton } = props;
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -51,9 +52,11 @@ export const SearchBar: React.FC<Props> = props => {
               value={searchValue}
             />
           </div>
-          <Button type="submit" onClick={handleSubmit}>
-            Search
-          </Button>
+          {!onSearch && showButton && (
+            <Button type="submit" onClick={handleSubmit}>
+              Search
+            </Button>
+          )}
         </form>
       </Toolbar>
     </AppBar>
