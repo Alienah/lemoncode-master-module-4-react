@@ -8,4 +8,4 @@ const mapMemberToVM = (data: am.Member): vm.Member => ({
 });
 
 export const mapMemberListToVM = (data: am.Member[]): vm.Member[] =>
-  data.map(mapMemberToVM);
+  (data.length > 0 && data.map(mapMemberToVM)) || [];
