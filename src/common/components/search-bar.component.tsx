@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button, TextField } from 'common/components';
+import { TopBar } from './top-bar.component';
 
 interface Props {
   defaultValue?: string;
@@ -12,13 +13,6 @@ interface Props {
 }
 
 const useStyles = makeStyles({
-  appBar: {
-    padding: '8px 0',
-  },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
   form: {
     display: 'flex',
   },
@@ -37,28 +31,26 @@ export const SearchBar: React.FC<Props> = props => {
   };
 
   return (
-    <AppBar position="static" color="transparent" className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
+    <TopBar>
+      <div className={classes.barItem}>
+        <SearchIcon />
+      </div>
+      <form className={classes.form}>
         <div className={classes.barItem}>
-          <SearchIcon />
+          <TextField
+            aria-label="search"
+            label="Search"
+            onChange={onChange}
+            size="small"
+            value={searchValue}
+          />
         </div>
-        <form className={classes.form}>
-          <div className={classes.barItem}>
-            <TextField
-              aria-label="search"
-              label="Search"
-              onChange={onChange}
-              size="small"
-              value={searchValue}
-            />
-          </div>
-          {!onSearch && showButton && (
-            <Button type="submit" onClick={handleSubmit}>
-              Search
-            </Button>
-          )}
-        </form>
-      </Toolbar>
-    </AppBar>
+        {!onSearch && showButton && (
+          <Button type="submit" onClick={handleSubmit}>
+            Search
+          </Button>
+        )}
+      </form>
+    </TopBar>
   );
 };

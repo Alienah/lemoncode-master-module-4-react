@@ -10,4 +10,5 @@ package-lock.json
 yarn.lock
 .awcache
 .vscode
+.DS_Store
 public
