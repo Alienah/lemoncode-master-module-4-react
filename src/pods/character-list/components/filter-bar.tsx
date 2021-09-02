@@ -23,6 +23,23 @@ const STATUS_OPTIONS = {
   UNKNOWN: 'Unknown',
 };
 
+const GENDER_OPTIONS = {
+  FEMALE: 'Female',
+  MALE: 'Male',
+  GENDERLESS: 'Genderless',
+  UNKNOWN: 'Unknown',
+};
+
+const SPECIES_OPTIONS = {
+  ALIEN: 'Alien',
+  ANIMAL: 'Animal',
+  HUMAN: 'Human',
+  HUMANOID: 'Humanoid',
+  MYTHOLOG: 'Mytholog',
+  ROBOT: 'Robot',
+  UNKNOWN: 'Unknown',
+};
+
 const mapToSelectOptions = obj =>
   Object.values(obj).map(value => {
     if (typeof value === 'string') {
@@ -37,11 +54,23 @@ const mapToSelectOptions = obj =>
 export const FilterBar: React.FC = () => {
   const { charName, setCharName } = useContext(CharactersContext);
   const { status, setStatus } = useContext(CharactersContext);
+  const { gender, setGender } = useContext(CharactersContext);
+  const { specie, setSpecie } = useContext(CharactersContext);
   const classes = useStyles();
 
   const statusOptions = useMemo(
     () => mapToSelectOptions(STATUS_OPTIONS) || [],
     [STATUS_OPTIONS]
+  );
+
+  const genderOptions = useMemo(
+    () => mapToSelectOptions(GENDER_OPTIONS) || [],
+    [GENDER_OPTIONS]
+  );
+
+  const speciesOptions = useMemo(
+    () => mapToSelectOptions(SPECIES_OPTIONS) || [],
+    [SPECIES_OPTIONS]
   );
 
   return (
@@ -62,6 +91,22 @@ export const FilterBar: React.FC = () => {
           options={statusOptions[0].hasOwnProperty('value') && statusOptions}
           onSelect={setStatus}
           value={status}
+        />
+      )}
+      {genderOptions.length > 0 && (
+        <Select
+          label="Gender"
+          options={genderOptions[0].hasOwnProperty('value') && genderOptions}
+          onSelect={setGender}
+          value={gender}
+        />
+      )}
+      {speciesOptions.length > 0 && (
+        <Select
+          label="Species"
+          options={speciesOptions[0].hasOwnProperty('value') && speciesOptions}
+          onSelect={setSpecie}
+          value={specie}
         />
       )}
     </TopBar>

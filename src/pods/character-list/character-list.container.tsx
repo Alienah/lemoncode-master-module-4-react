@@ -13,12 +13,12 @@ import { useDebounce } from 'use-debounce/lib';
 export const CharacterListContainer: React.FC = () => {
   const [list, setList] = useSafeState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { charName, status } = useContext(CharactersContext);
+  const { charName, status, gender, specie } = useContext(CharactersContext);
   const [debouncedCharName] = useDebounce(charName, 500);
 
   const onFetchCharacters = () => {
     setLoading(true);
-    getCharactersBy(charName, status)
+    getCharactersBy(charName, status, gender, specie)
       .then(mapCharacterListToVM)
       .then(res => {
         setLoading(false);
@@ -28,7 +28,7 @@ export const CharacterListContainer: React.FC = () => {
 
   useEffect(() => {
     onFetchCharacters();
-  }, [debouncedCharName, status]);
+  }, [debouncedCharName, status, gender, specie]);
 
   return (
     <>
