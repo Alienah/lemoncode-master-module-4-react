@@ -3,7 +3,8 @@ import { Member } from './member-detail.vm';
 import { getUser } from './api';
 import { mapMemberToVM } from './member-detail.mappers';
 import { MemberDetail } from './member-detail.component';
-import { BackLink } from './components/back-link';
+import { BackLink } from 'common/components';
+import { routes } from 'core/router/routes';
 
 interface Props {
   user: string;
@@ -21,7 +22,7 @@ export const MemberDetailContainer: React.FC<Props> = props => {
 
   return (
     <>
-      <BackLink />
+      <BackLink text="Back to member list" link={routes.memberList} />
       {member && <MemberDetail member={member} />}
     </>
   );

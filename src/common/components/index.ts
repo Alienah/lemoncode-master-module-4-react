@@ -1,3 +1,4 @@
+export * from './back-link.component';
 export * from './button.component';
 export * from './loader.component';
 export * from './search-bar.component';

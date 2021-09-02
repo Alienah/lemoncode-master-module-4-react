@@ -1,7 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { routes } from 'core/router/routes';
+
+interface Props {
+  text: string;
+  link: string;
+}
 
 const useStyles = makeStyles({
   link: {
@@ -11,11 +15,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const BackLink: React.FC = () => {
+export const BackLink: React.FC<Props> = props => {
+  const { text, link } = props;
   const classes = useStyles();
   return (
     <div className={classes.link}>
-      <Link to={routes.memberList}>Back to member list</Link>
+      <Link to={link}>{text}</Link>
     </div>
   );
 };
