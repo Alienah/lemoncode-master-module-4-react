@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 export const SearchBar: React.FC<Props> = props => {
   const classes = useStyles();
-  const { onSearch, searchValue, onChange, showButton } = props;
+  const { onSearch, searchValue, onChange, showButton = true } = props;
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ export const SearchBar: React.FC<Props> = props => {
             value={searchValue}
           />
         </div>
-        {!onSearch && showButton && (
+        {onSearch && showButton && (
           <Button type="submit" onClick={handleSubmit}>
             Search
           </Button>

@@ -42,7 +42,9 @@ export const AppLayout: React.FC = ({ children }) => {
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit">
-            React app
+            <Link className={classes.link} to={routes.memberList}>
+              React app
+            </Link>
           </Typography>
           <IconButton
             edge="start"
