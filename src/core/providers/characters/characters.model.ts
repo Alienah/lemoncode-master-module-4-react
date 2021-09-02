@@ -2,9 +2,11 @@ interface CharactersContextModel {
   charName: string;
   setCharName: (charName: string) => void;
   status: string;
-  setStatus: (charName: string) => void;
+  setStatus: (status: string) => void;
   gender: string;
-  setGender: (charName: string) => void;
+  setGender: (gender: string) => void;
   specie: string;
-  setSpecie: (charName: string) => void;
+  setSpecie: (specie: string) => void;
+  pages: number;
+  setPages: (page: number) => void;
 }
