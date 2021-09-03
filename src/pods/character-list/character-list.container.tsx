@@ -14,7 +14,7 @@ import { Pagination } from './components/pagination';
 export const CharacterListContainer: React.FC = () => {
   const [list, setList] = useSafeState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { charName, status, gender, specie, pages, setPages } = useContext(
+  const { charName, status, gender, specie, setPages } = useContext(
     CharactersContext
   );
   const [debouncedCharName] = useDebounce(charName, 500);
