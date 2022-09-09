@@ -43,7 +43,7 @@ export const AppLayout: React.FC = ({ children }) => {
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit">
             <Link className={classes.link} to={routes.memberList}>
-              React app
+              Api Consulting App
             </Link>
           </Typography>
           <IconButton
